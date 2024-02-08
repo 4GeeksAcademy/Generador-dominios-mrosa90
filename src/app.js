@@ -1,11 +1,28 @@
 /* eslint-disable */
-import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+window.onload = () => {
+  let pronoun = ["the", "our"];
+  let adj = ["great", "big"];
+  let noun = ["jogger", "racoon"];
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+  function generarNombreDominio() {
+    let pronounAleatorio = pronoun[Math.floor(Math.random() * pronoun.length)];
+    let adjAleatorio = adj[Math.floor(Math.random() * adj.length)];
+    let nounAleatorio = noun[Math.floor(Math.random() * noun.length)];
+
+    return `${pronounAleatorio}${adjAleatorio}${nounAleatorio}.com`;
+  }
+
+  function mostrarNombresDominio() {
+    let resultados = [];
+    for (let i = 0; i < 9; i++) {
+      resultados.push(generarNombreDominio());
+    }
+    return resultados;
+  }
+
+  document.getElementById(
+    "resultado"
+  ).innerHTML = `<br>${mostrarNombresDominio().join("<br>")}`;
 };
